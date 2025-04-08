@@ -18,7 +18,7 @@ def password_checker(password):
     if not any(character.islower() for character in password):
         return Fore.RED + "Weak Password, Try Adding At Least One Lower Case Character" + Style.RESET_ALL
     
-    if not re.search(r'[!@#$%^&*()_\-+=<>.{}\[\]?]', password):
+    if not re.search(r'[!@#$%^&*()_\-+=<>.{,/}\[\]?]', password):
         return Fore.YELLOW + "Medium Password, Try Adding Special Character To Make Your Password Stronger" + Style.RESET_ALL
     
     return Fore.GREEN + "Strong Password, It Is A Reliable Password" + Style.RESET_ALL
