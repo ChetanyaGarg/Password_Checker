@@ -1,5 +1,17 @@
 import re
+import random
+import string
 from colorama import Fore, Style
+
+def random_password(password,k):
+    if len(password)<8:
+        k = 8-len(password)-2
+        
+    random_digit=''.join(random.choices(string.digits,k=k))
+    random_unique=random.choice("!@#$%^&*()_-+=<>.?")
+    random_upper=random.choice(string.ascii_uppercase)
+    return password+random_upper+random_digit+random_unique
+
 
 def password_checker(password):
 
@@ -29,6 +41,7 @@ def password_input():
     print(Fore.CYAN + "[+] Just A Second..." + Style.RESET_ALL)
 
     while True:
+        print('\n')
         
         password = input("Enter Your Password (Type 'exit' to quit): ")
 
@@ -39,8 +52,16 @@ def password_input():
             print('\n')
             break
 
+        rec1=random_password(password,random.randint(0, 6))
+        rec2=random_password(password,random.randint(0, 6))
+        rec3=random_password(password,random.randint(0, 6))
+
         result = password_checker(password)
         print(result)
+        
+        print(Fore.MAGENTA + f"Recommended Passwords: {rec1}, {rec2}, {rec3}" + Style.RESET_ALL)
+
+
 
 if __name__ == "__main__":
     password_input()
